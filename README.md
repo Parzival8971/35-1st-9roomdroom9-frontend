@@ -536,7 +536,6 @@ const sortLow = () => {
 
 ![search](https://user-images.githubusercontent.com/83544570/202481384-0d617940-30d9-4b3c-92a4-ae3b6875cf07.gif)
 
-
 ```jsx
 const [userInput, setUserInput] = useState('');
 const [userSearch, setUserSearch] = useState([]);
@@ -606,6 +605,73 @@ useEffect(() => {
       setUserSearch(result.products_data);
     });
 }, [PROXY, userInput]);
+```
+
+#
+
+### 비동기 fetch를 async,await,axios로 변환과 예외처리 ? +11.06
+
+- 기존 로그인API 처리는 fetch와 Promise체이닝으로 then을 붙혀서 사용하였다.
+- then의 연속 사용성과 JSON의 변환과정도 필요 없이 `코드의 가독성 편의성, 보안성`을 갖춘 axios를 적용해보기로 했다.
+- `'Content-Type': 'application/json'` 도 전혀 몰랐는데... 요청과 응답에 데이터 형식을 알려주기 위해서 필요함도 알게 되었다.
+- 첫 fetch에 대해 배웠을땐, if문으로 result.message === 'INVALID_USER' 결과 값을 alert으로 띄어주면 끝? 으로 생각했다.
+- 공부를 하게되고 조금씩 더 알게 되면서, `예외처리의 중요성도 알게 되고, http메서드에도 부가 설정을 많이 할 수 있음을 알게 되었다.`
+- 가장 기초가 되는` 예외처리를 방법으로 try~catch`를 사용하여 처리하였다. 더 좋은 예외처리 방법들에 대해서도 접해보고 싶다.
+- catch문에 console.error('에러발생', error.response.data.message)를 적어 `런타임에 어떠한 오류인지 확인할 수 있었다.`
+
+![try](https://user-images.githubusercontent.com/83544570/204098597-c3ce65c5-8f44-4b2a-a0f3-5bc53308aae7.gif)
+
+```jsx
+[기존 코드]
+const postUserData = (e) => {
+  e.preventDefault();
+  fetch(`${BASE_URL}/users/login`, {method: 'POST',
+    body: JSON.stringify({
+      email: userId,
+      password: userPw,
+    }),
+  }).then((res) => res.json())
+    .then((result) => {
+      if (result.access_token) {
+        localStorage.setItem('token', result.access_token);
+        localStorage.setItem('name', result.name);
+        alert(`로그인을 환영합니다 ${userId}님`);
+        navigate('/');
+        window.location.reload();
+      } else if (result.message === 'INVALID_USER') {
+        alert('아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.');
+      } else if (result.message === 'User matching query does not exist.') {
+        alert('아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.');
+      }
+    });
+};
+```
+
+```jsx
+[axios 적용 코드]
+const postUserData = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await axios.post(`${BASE_URL}/users/login`,
+      { email: userId, password: userPw,},
+      { headers: { 'Content-Type': 'application/json' } });
+    if (response.data.access_token) {
+      localStorage.setItem('token', response.data.access_token);
+      localStorage.setItem('name', response.data.name);
+      alert(`로그인을 환영합니다 ${userId}님`);
+      navigate('/');
+      window.location.reload();
+    }
+  } catch (error) {
+    if (error.response.data.message === 'INVALID_USER') {
+      alert('아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.');
+    }
+    if (error.response.data.message === 'User_DoseNotExist') {
+      alert('아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.');
+    }
+    console.error('에러발생', error.response.data.message);
+  }
+};
 ```
 
 ### 🐥 재밌게 만들었어요!
