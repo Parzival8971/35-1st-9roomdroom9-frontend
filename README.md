@@ -2,7 +2,11 @@
 
 ### 🐥 프론트, 백엔드 깃허브
 
-> [팀 프로젝트 프론트엔드 GitHub](https://github.com/wecode-bootcamp-korea/35-1st-9roomdroom9-frontend)<br/> [팀 프로젝트 백엔드 GitHub](https://github.com/wecode-bootcamp-korea/35-1st-9roomdroom9-backend)
+> **웹 배포 : [https://9roomdroom9.netlify.app/](https://9roomdroom9.netlify.app) | AWS 요금부과 문제로 Netlify 재배포**
+<br/> **유튜브 영상 링크 : [https://www.youtube.com/watch?v=MYvWzDs-gTM](https://www.youtube.com/watch?v=MYvWzDs-gTM) | V1**
+<br/>**팀 프로젝트 프론트엔드 : [GitHub](https://github.com/wecode-bootcamp-korea/35-1st-9roomdroom9-frontend)** | **팀 프로젝트 백엔드 : [GitHub](https://github.com/wecode-bootcamp-korea/35-1st-9roomdroom9-backend)**
+
+#
 
 ### 🐥 앞뒤가 똑같은 구방문방구!
 
@@ -36,16 +40,15 @@ Back-end : ⚽️이정훈님, 🐱음정민님
 
 ### 🐥 열심히 만들어본 페이지! 그래서 누가했는가!<br/>
 
-#### [👑엄성훈님(PM)](https://velog.io/@fortheher/%EB%B0%B0%EB%AF%BC%EB%AC%B8%EB%B0%A9%EA%B5%AC-%ED%81%B4%EB%A1%A0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-REACT), [❤️김광희님](https://tail-star.tistory.com/9), [🐥정예빈님](https://velog.io/@yebin214/1%EC%B0%A8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0)<br>
+#### [👑 엄성훈님(PM)](https://velog.io/@fortheher/%EB%B0%B0%EB%AF%BC%EB%AC%B8%EB%B0%A9%EA%B5%AC-%ED%81%B4%EB%A1%A0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-REACT), [❤️ 김광희님](https://tail-star.tistory.com/9), [🐥 정예빈님](https://velog.io/@yebin214/1%EC%B0%A8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0)<br>
 
-- (클릭 시 블로그로 이동!)
-- Navigation Bar ❤️👑
+> - Navigation Bar ❤️ 👑
 - Footer ❤️
-- **회원가입 페이지 👑**
-- **로그인 페이지 👑**
+> - **회원가입 페이지 👑**
+> - **로그인 페이지 👑**
 - 메인 페이지 🐥
-- **상품 리스트 페이지 👑**
-- **상품 디테일 페이지 👑**
+> - **상품 리스트 페이지 👑**
+> - **상품 디테일 페이지 👑**
 - 장바구니 페이지 ❤️
 
 #
@@ -300,7 +303,7 @@ useEffect(() => {
 - 동적 라우팅을 위해 파라미터로 해당 번호의 :id를 연결해 주었습니다.
 - 페이지에 필요한 데이터를 useEffect 에서 fetching하였고, state에 담아 컴포넌트 UI를 render 처리해 주었습니다.
 
-![장바구니](https://user-images.githubusercontent.com/83544570/196631966-c560f988-f489-41bf-a852-a4902a775aa7.gif)
+![탭메뉴](https://user-images.githubusercontent.com/83544570/214340791-289de896-c8c9-473c-992c-533deaf3682e.gif)
 
 ```jsx
 <Route path='/Products/detail/:id' element={<ItemDetail />} />;
@@ -483,6 +486,7 @@ import Skeleton from 'react-loading-skeleton';
 - 그결과 CSS가 빈값에도 스타일값이 들어가고, 가운데 정렬이 안되는것이였다.
 - 조건부랜더링으로 값이 있고 없고 할 때만 처리를 하여서 해결할 수 있었다.
 - `공부하다 보이는 아쉬운 점들 비동기처리의 try..catch 예외처리와 버튼 같은것들은 하나의 컴포넌트로 props로 내려주는것에 따라 바뀌게 처리하면 더 좋은 코드가 될 수 있을 것 같다.`
+![BEST](https://user-images.githubusercontent.com/83544570/214343561-6dc8e289-aebf-4ce0-b02a-1ae67b9fd1d2.jpg)
 
 ```jsx
 전
@@ -676,7 +680,7 @@ const postUserData = async (e) => {
 
 ### 🐥 재밌게 만들었어요!
 
-> [유튜브 영상 링크](https://www.youtube.com/watch?v=MYvWzDs-gTM)(처음 만든 버전입니다.)
+
 
 <table>
   <thead>
